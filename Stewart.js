@@ -40,26 +40,15 @@ var callback = function(err, res, body) {
         var filepath
         var data = JSON.parse(body)
         for (let result of data) {
-            filepath = './avatars/' + result['login'] + '.png'
+            filepath = './avatars' + result['login'] + '.png'
             downloadImageByURL(result['avatar_url'], filepath)
         }
     } else {
-        console.log('ya brokeded it (*_____*)')
-        //throw err;
+        console.log('ya dun fucked it good')
+        throw err;
     }
 }
 
-var repoOwner = process.argv[2]
-var repoName = process.argv[3]
-
-if(process.argv.length === 2){
-    console.log('Please Provide a Repo Owner')
-} else if (process.argv.length === 3) {
-    console.log('Please Provide a Repo Name')
-}
-
-
-
-
-
+var repoOwner = 'jQuery'
+var repoName = 'jQuery'
 getRepoContributors(repoOwner, repoName, callback)
